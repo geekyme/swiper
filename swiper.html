@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Before After Silder</title>
+	<style>
+	.before_after_slider {
+	  	position: relative;
+	  	margin-left: 60px;
+	  	margin-top: 60px;
+	}
+	.before_after_slider > * {
+		position: absolute;
+	}
+	.black_white {
+	  	overflow: hidden;
+	}
+</style>
+</head>
+<body>
+	<div class="before_after_slider">
+	  <div class="color">
+	    <img src="http://i.picresize.com/images/2013/04/06/9pX4.png" width="640" height="400" alt="" />
+	  </div>
+	  <div class="black_white">
+	    <img src="http://i.picresize.com/images/2013/04/06/2sJzq.png" width="640" height="400" alt="black_white" />
+	  </div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+	var $black_white = $('.black_white'),
+		img_width = $('.black_white img').width(),
+		init_split = Math.round(img_width/2);
+	$('.before_after_slider').mousemove(function(e){
+		$black_white.stop().width(e.offsetX);
+	})
+
+	$('.before_after_slider').mouseleave(function(e){
+		$black_white.stop().animate({
+		  width: init_split
+		 },1000)
+	})
+	</script>
+</body>
+</html>
